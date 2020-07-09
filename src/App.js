@@ -95,19 +95,38 @@ class AddPostPage extends React.Component{
     super(props);
     this.state = {
       title:"",
-      content:"",
+      content:"Please write your post.",
       img:""
     }
+    this.titleWriter = this.titleWriter.bind(this);
+    this.contentWriter = this.contentWriter.bind(this);
+    this.postAdder = this.postAdder.bind(this);
+  }
 
+  titleWriter(event){
+    this.setState({title: event.target.value})
+  }
+  contentWriter(event){
+    this.setState({content: event.target.value})
+  }
+  postAdder(){
+    const newPost = this.state;
+    let post_list = this.props.post_list;
+    post_list.push(newPost);
+    this.props.post_list_setter(post_list);
+    this.props.page_type_setter("PostBoardPage");
   }
 
   render(){
     return (
       <>
-        <Title />
-        <Content />
+        <Title title={this.state.title} titleWriter={this.titleWriter}/>
+        <Content content={this.state.content} contentWriter={this.contentWriter}/>
         <Img />
-        <ControlButtons />
+        <ControlButtons 
+          page_type_setter={this.props.page_type_setter}
+          postAdder={this.postAdder}
+        />
       </>
     )
   }
@@ -121,7 +140,11 @@ class Title extends React.Component{
     return (
       <div>
         <span>Title:</span>
-        <input type="text" name="title" maxLength="10" style={{width: "20%"}}/>
+        <input 
+          value={this.props.title}
+          onChange={this.props.titleWriter} 
+          type="text" name="title" maxLength="10" 
+          style={{width: "20%"}}/>
       </div>
     )
   }
@@ -135,7 +158,10 @@ class Content extends React.Component{
     return (
       <div>
         <span>Content:</span>
-        <textarea cols="50" rows="5" name="content"/>
+        <textarea 
+          value={this.props.content} 
+          onChange={this.props.contentWriter} 
+          cols="50" rows="5" name="content"/>
       </div>
     )
   }
@@ -152,12 +178,21 @@ class Img extends React.Component{
 class ControlButtons extends React.Component{
   constructor(props){
     super(props)
+    this.changePage = this.changePage.bind(this);
   }
+
+  changePage(){
+    this.props.page_type_setter("PostBoardPage");
+  }
+
   render(){
     return (
       <div>
         <button >upload</button>
-        <button >submit</button>
+        <button onClick={this.props.postAdder}>submit</button>
+        <br/>
+        <br/>
+        <button onClick={this.changePage}>cancel</button>
       </div>
     )
   }
