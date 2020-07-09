@@ -107,7 +107,7 @@ class AddPostPage extends React.Component{
         <Title />
         <Content />
         <Img />
-        <ControlBottons />
+        <ControlButtons />
       </>
     )
   }
@@ -118,7 +118,12 @@ class Title extends React.Component{
     super(props);
   }
   render(){
-    return <></>
+    return (
+      <div>
+        <span>Title:</span>
+        <input type="text" name="title" maxLength="10" style={{width: "20%"}}/>
+      </div>
+    )
   }
 }
 
@@ -127,20 +132,34 @@ class Content extends React.Component{
     super(props);
   }
   render(){
-    return <></>
+    return (
+      <div>
+        <span>Content:</span>
+        <textarea cols="50" rows="5" name="content"/>
+      </div>
+    )
   }
 }
 class Img extends React.Component{
   render(){
-    return <></>
+    return (
+      <div>
+        <span>Image Preview:</span>
+      </div>
+    )
   }
 }
-class ControlBottons extends React.Component{
+class ControlButtons extends React.Component{
   constructor(props){
     super(props)
   }
   render(){
-    return <></>
+    return (
+      <div>
+        <button >upload</button>
+        <button >submit</button>
+      </div>
+    )
   }
 }
 
