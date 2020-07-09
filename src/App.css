@@ -1,0 +1,8 @@
+.postItem{
+  width: 50%; 
+  margin: 10px auto;
+  border-style: dashed;
+}
+.App{
+  text-align: center;
+}
