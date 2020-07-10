@@ -22,6 +22,7 @@ class AddPostPage extends React.Component{
       this.setState({content: event.target.value});
     }
     imgUrlWriter(event){
+        console.log(event.target.files);
       this.setState({
         img: URL.createObjectURL(event.target.files[0])
       });
@@ -80,10 +81,15 @@ class AddPostPage extends React.Component{
   }
   class Img extends React.Component{
     render(){
+        let view =(
+            <div>
+            <span>Image Preview:</span>
+            <img src={this.props.imgUrl} alt="preview"/>
+            </div>
+        );
       return (
         <div>
-          <span>Image Preview:</span>
-          {this.props.imgUrl?<img src={this.props.imgUrl} alt="preview"/>:<></>}
+          {this.props.imgUrl?view:<></>}
         </div>
       )
     }
@@ -117,7 +123,8 @@ class AddPostPage extends React.Component{
               type="file" accept="image/*" 
               onChange={this.handleInput} 
               ref={this.inputFileRef} 
-              style={{display: 'none'}} />
+              style={{display: 'none'}} 
+              multiple/>
           </div>
           <button onClick={this.handleUpload}>upload</button>
           <button onClick={this.props.postAdder}>submit</button>
