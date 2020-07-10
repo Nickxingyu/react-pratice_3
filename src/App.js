@@ -6,16 +6,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       PageType: "PostBoardPage",
-      post_list: [
-        {
-          title: "Hello",
-          content: "World"
-        },
-        {
-          title: "Hero",
-          content: "is Hero"
-        }
-      ]
+      post_list: []
     }
     this.page_type_setter = this.page_type_setter.bind(this);
     this.post_list_setter = this.post_list_setter.bind(this);
@@ -81,7 +72,7 @@ class PostBoardPage extends React.Component{
             <div key={index} className="postItem">
               <div>{post.title}</div>
               <div>{post.content}</div>
-              <div>{post.image}</div>
+              {post.img?<img src={post.img} alt="preview"/>:<></>}
             </div>
           )
         })}
@@ -101,13 +92,19 @@ class AddPostPage extends React.Component{
     this.titleWriter = this.titleWriter.bind(this);
     this.contentWriter = this.contentWriter.bind(this);
     this.postAdder = this.postAdder.bind(this);
+    this.imgUrlWriter = this.imgUrlWriter.bind(this);
   }
 
   titleWriter(event){
-    this.setState({title: event.target.value})
+    this.setState({title: event.target.value});
   }
   contentWriter(event){
-    this.setState({content: event.target.value})
+    this.setState({content: event.target.value});
+  }
+  imgUrlWriter(event){
+    this.setState({
+      img: URL.createObjectURL(event.target.files[0])
+    });
   }
   postAdder(){
     const newPost = this.state;
@@ -122,10 +119,11 @@ class AddPostPage extends React.Component{
       <>
         <Title title={this.state.title} titleWriter={this.titleWriter}/>
         <Content content={this.state.content} contentWriter={this.contentWriter}/>
-        <Img />
+        <Img imgUrl={this.state.img}/>
         <ControlButtons 
           page_type_setter={this.props.page_type_setter}
           postAdder={this.postAdder}
+          imgUrlWriter={this.imgUrlWriter}
         />
       </>
     )
@@ -171,6 +169,7 @@ class Img extends React.Component{
     return (
       <div>
         <span>Image Preview:</span>
+        {this.props.imgUrl?<img src={this.props.imgUrl} alt="preview"/>:<></>}
       </div>
     )
   }
@@ -179,16 +178,34 @@ class ControlButtons extends React.Component{
   constructor(props){
     super(props)
     this.changePage = this.changePage.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+    this.inputFileRef = React.createRef();
   }
 
   changePage(){
     this.props.page_type_setter("PostBoardPage");
   }
 
+  handleInput(event){
+    this.props.imgUrlWriter(event)
+  }
+
+  handleUpload(){
+    this.inputFileRef.current.click();
+  }
+
   render(){
     return (
       <div>
-        <button >upload</button>
+        <div>
+          <input 
+            type="file" accept="image/*" 
+            onChange={this.handleInput} 
+            ref={this.inputFileRef} 
+            style={{display: 'none'}} />
+        </div>
+        <button onClick={this.handleUpload}>upload</button>
         <button onClick={this.props.postAdder}>submit</button>
         <br/>
         <br/>
