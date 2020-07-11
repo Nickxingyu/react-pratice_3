@@ -3,7 +3,7 @@ import './App.css';
 import PostBoardPage from './PostBoardPage';
 import AddPostPage from './AddPostPage';
 
-//Use Function Component
+// Use Function Component with Hook
 function App(){
   const [PageType,setPageType] = React.useState("PostBoardPage");
   const [post_list,setPostList] = React.useState([]);

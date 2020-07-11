@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Use Function Component with Hook
+
 function PostBoardPage(props){
   const changePage = () => {
     props.page_type_setter("AddPostPage");
