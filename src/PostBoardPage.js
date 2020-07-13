@@ -15,17 +15,17 @@ function PostBoardPage(props){
   }
   return(
     <>
-           <button onClick={changePage}>Add Post</button>
-           <button onClick={removePost}>Remove Post</button>
-           {props.post_list.map((post,index)=> {
-             return(
-               <div key={index} className="postItem">
-                 <div>{post.title}</div>
-                 <div>{post.content}</div>
-                 {post.img?<img src={post.img} alt="preview"/>:<></>}
-               </div>
-             )
-           })}
+      <button onClick={changePage}>Add Post</button>
+      <button onClick={removePost}>Remove Post</button>
+      {props.post_list.map((post,index)=> {
+        return(
+          <div key={index} className="postItem">
+            <div>{post.title}</div>
+            <div>{post.content}</div>
+            {(post.imgs&&post.imgs.length)?post.imgs.map((img,index) => <img key={index} src={img} alt="preview"/>):<></>}
+          </div>
+        )
+      })}
          </>
   );
 }

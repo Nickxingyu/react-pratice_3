@@ -18,7 +18,6 @@ function App(){
     AddPostPage: AddPostPage
   }
   let Page = components[PageType];
-  console.log("Hi");
   return(
     <div className="App">
       <header className="App-header">

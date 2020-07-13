@@ -5,7 +5,7 @@ import React from 'react';
 function AddPostPage(props){
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("Please write your post.");
-    const [img, setImg] = React.useState("");
+    const [imgs, setImgs] = React.useState([]);
     const titleWriter = event=>{
         setTitle(event.target.value);
     }
@@ -14,21 +14,25 @@ function AddPostPage(props){
     }
     const postAdder = () => {
         const newPost = {
-            title,content,img
+            title,content,imgs
         };
-        let post_list = props.post_list;//.slice();
+        let post_list = props.post_list.slice();
         post_list.push(newPost);
         props.post_list_setter(post_list);
         props.page_type_setter("PostBoardPage");
     }
     const imgUrlWriter = event => {
-        setImg(URL.createObjectURL(event.target.files[0]));
+        const imgsUrl=[];
+        for(let index = 0; index < event.target.files.length; index++){
+            imgsUrl.push(URL.createObjectURL(event.target.files[index]));
+        }
+        setImgs(imgsUrl);
     }
     return (
         <>
           <Title title={title} titleWriter={titleWriter}/>
           <Content content={content} contentWriter={contentWriter}/>
-          <Img imgUrl={img}/>
+          <Img imgUrls={imgs}/>
           <ControlButtons 
             page_type_setter={props.page_type_setter}
             postAdder={postAdder}
@@ -67,12 +71,13 @@ function Img(props){
     let view =(
         <div>
         <span>Image Preview:</span>
-        <img src={props.imgUrl} alt="preview"/>
+        {/* <img src={props.imgUrls} alt="preview"/> */}
+        {props.imgUrls.map((imgUrl,index) => <img key={index} src={imgUrl} alt="preview"/>)}
         </div>
     );
     return (
         <div>
-          {props.imgUrl?view:<></>}
+          {(props.imgUrls&&props.imgUrls.length)?view:<></>}
         </div>
     );
 }
