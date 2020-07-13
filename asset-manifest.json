@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Nickxingyu/frontend-practice-07-09/static/css/main.30bc5495.chunk.css",
-    "main.js": "/Nickxingyu/frontend-practice-07-09/static/js/main.12c2d0eb.chunk.js",
-    "main.js.map": "/Nickxingyu/frontend-practice-07-09/static/js/main.12c2d0eb.chunk.js.map",
-    "runtime-main.js": "/Nickxingyu/frontend-practice-07-09/static/js/runtime-main.241d2d87.js",
-    "runtime-main.js.map": "/Nickxingyu/frontend-practice-07-09/static/js/runtime-main.241d2d87.js.map",
-    "static/js/2.d2560713.chunk.js": "/Nickxingyu/frontend-practice-07-09/static/js/2.d2560713.chunk.js",
-    "static/js/2.d2560713.chunk.js.map": "/Nickxingyu/frontend-practice-07-09/static/js/2.d2560713.chunk.js.map",
-    "index.html": "/Nickxingyu/frontend-practice-07-09/index.html",
-    "precache-manifest.4e30418846c8a6a73ece5ff99271e0cf.js": "/Nickxingyu/frontend-practice-07-09/precache-manifest.4e30418846c8a6a73ece5ff99271e0cf.js",
-    "service-worker.js": "/Nickxingyu/frontend-practice-07-09/service-worker.js",
-    "static/css/main.30bc5495.chunk.css.map": "/Nickxingyu/frontend-practice-07-09/static/css/main.30bc5495.chunk.css.map",
-    "static/js/2.d2560713.chunk.js.LICENSE.txt": "/Nickxingyu/frontend-practice-07-09/static/js/2.d2560713.chunk.js.LICENSE.txt"
+    "main.css": "/frontend-practice-07-09/static/css/main.30bc5495.chunk.css",
+    "main.js": "/frontend-practice-07-09/static/js/main.25b5ca56.chunk.js",
+    "main.js.map": "/frontend-practice-07-09/static/js/main.25b5ca56.chunk.js.map",
+    "runtime-main.js": "/frontend-practice-07-09/static/js/runtime-main.6b9523a2.js",
+    "runtime-main.js.map": "/frontend-practice-07-09/static/js/runtime-main.6b9523a2.js.map",
+    "static/js/2.d2560713.chunk.js": "/frontend-practice-07-09/static/js/2.d2560713.chunk.js",
+    "static/js/2.d2560713.chunk.js.map": "/frontend-practice-07-09/static/js/2.d2560713.chunk.js.map",
+    "index.html": "/frontend-practice-07-09/index.html",
+    "precache-manifest.adcd1082dd8d650226cbc9c5ebe3edc6.js": "/frontend-practice-07-09/precache-manifest.adcd1082dd8d650226cbc9c5ebe3edc6.js",
+    "service-worker.js": "/frontend-practice-07-09/service-worker.js",
+    "static/css/main.30bc5495.chunk.css.map": "/frontend-practice-07-09/static/css/main.30bc5495.chunk.css.map",
+    "static/js/2.d2560713.chunk.js.LICENSE.txt": "/frontend-practice-07-09/static/js/2.d2560713.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.241d2d87.js",
+    "static/js/runtime-main.6b9523a2.js",
     "static/js/2.d2560713.chunk.js",
     "static/css/main.30bc5495.chunk.css",
-    "static/js/main.12c2d0eb.chunk.js"
+    "static/js/main.25b5ca56.chunk.js"
   ]
 }
